@@ -1,8 +1,8 @@
 /* --- বেসিক রিসেট ও ব্যাকগ্রাউন্ড --- */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* ব্যাকগ্রাউন্ড কালার পরিবর্তন করা হয়েছে */
-    background-color: #1a111a; /* গাঢ় বেগুনি বা কালো-গোলাপি মিশেল */
+    /* আপনার রাখা গাঢ় ব্যাকগ্রাউন্ড কালার */
+    background-color: #1a111a; 
     color: #fce4ec; /* হালকা গোলাপি ফন্ট কালার */
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     
-    /* পুরো বডি জুড়ে গোলাপি গ্লো ইফেক্ট যুক্ত করা হয়েছে (যদিও এটি subtle/কম দৃশ্যমান) */
+    /* পুরো বডি জুড়ে গোলাপি গ্লো ইফেক্ট রাখা হলো */
     box-shadow: inset 0 0 50px rgba(255, 105, 180, 0.2), inset 0 0 100px rgba(255, 105, 180, 0.1);
 }
 
@@ -21,7 +21,7 @@ body {
     background-color: #2c1a2e; /* কন্টেইনারের গাঢ় ব্যাকগ্রাউন্ড */
     border-radius: 15px;
     padding: 40px;
-    /* কন্টেইনারে হালকা গোলাপি গ্লো শ্যাডো */
+    /* কন্টেইনারে হালকা গোলাপি গ্লো শ্যাডো রাখা হলো */
     box-shadow: 0 0 20px rgba(255, 105, 180, 0.4), 0 0 40px rgba(255, 105, 180, 0.2);
     text-align: center;
     max-width: 500px;
@@ -34,30 +34,31 @@ body {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    /* ছবির বর্ডার কালার পরিবর্তন করা হয়েছে */
-    border: 5px solid #ff69b4; /* হট পিঙ্ক বর্ডার */
+    /* ছবির বর্ডার কালার হট পিঙ্ক রাখা হলো */
+    border: 5px solid #ff69b4; 
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
     transition: transform 0.3s ease;
 }
 
 .profile-photo:hover {
-    transform: scale(1.05); /* হোভার করলে ছবি সামান্য বড় হবে */
-    box-shadow: 0 0 25px #ff69b4, 0 0 40px #ffc0cb; /* হোভারে উজ্জ্বল গোলাপি গ্লো */
+    transform: scale(1.05); 
+    box-shadow: 0 0 25px #ff69b4, 0 0 40px #ffc0cb; 
 }
 
-/* --- নামের গ্লো ইফেক্ট --- */
+/* --- নামের গ্লো ইফেক্ট (নীল রঙ) --- */
 .name {
-    color: #ff69b4; /* হট পিঙ্ক */
+    color: #00bfff; /* ডিপস্কাই ব্লু (নীল) */
     margin: 20px 0 10px;
     font-size: 2.2em;
-    text-shadow: 0 0 10px #ffc0cb, 0 0 20px #ff69b4; /* গোলাপি টেক্সট গ্লো */
+    /* নীল টেক্সট গ্লো */
+    text-shadow: 0 0 10px #87cefa, 0 0 20px #00bfff; 
     transition: all 0.5s ease;
 }
 
 .name:hover {
     /* হোভার করলে আরও উজ্জ্বল গ্লো */
     color: #ffffff; /* হোভারে সাদা রঙ */
-    text-shadow: 0 0 15px #ffffff, 0 0 30px #ff69b4, 0 0 45px #ffc0cb;
+    text-shadow: 0 0 15px #ffffff, 0 0 30px #00bfff, 0 0 45px #87cefa;
 }
 
 
@@ -95,7 +96,7 @@ body {
     margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 20px; /* আইকনগুলোর মধ্যে দূরত্ব */
+    gap: 20px; 
 }
 
 .social-icon {
@@ -105,3 +106,40 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    background-color: #45475a;
+    color: #cdd6f4;
+    font-size: 1.5em;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s ease; 
+}
+
+/* --- সোশ্যাল আইকনের গ্লো ইফেক্ট (আগের মতো প্ল্যাটফর্ম কালার) --- */
+
+/* ইনস্টাগ্রাম কালার */
+.social-icon[data-social="instagram"]:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+    box-shadow: 0 0 20px #e1306c, 0 0 40px #e1306c;
+    transform: scale(1.15);
+}
+
+/* ডিসকর্ড কালার */
+.social-icon[data-social="discord"]:hover {
+    background-color: #5865f2;
+    box-shadow: 0 0 20px #5865f2, 0 0 40px #5865f2;
+    transform: scale(1.15);
+}
+
+/* ফেসবুক কালার */
+.social-icon[data-social="facebook"]:hover {
+    background-color: #1877f2;
+    box-shadow: 0 0 20px #1877f2, 0 0 40px #1877f2;
+    transform: scale(1.15);
+}
+
+/* স্পটিফাই কালার */
+.social-icon[data-social="spotify"]:hover {
+    background-color: #1ed760;
+    box-shadow: 0 0 20px #1ed760, 0 0 40px #1ed760;
+    transform: scale(1.15);
+        }
