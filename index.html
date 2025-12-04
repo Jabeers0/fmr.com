@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Card - Updated</title>
+    <title>Profile Card - Image Styled Modal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ১. বডি এবং ব্যাকগ্রাউন্ড সেটআপ (স্ক্রিনশটের মতো) */
+        /* ১. বডি এবং ব্যাকগ্রাউন্ড সেটআপ */
         body {
             margin: 0;
             padding: 0;
@@ -24,7 +24,6 @@
             overflow: hidden;
         }
 
-        /* ব্যাকগ্রাউন্ডে ছোট তারার ইফেক্ট */
         body::before {
             content: "";
             position: absolute;
@@ -49,7 +48,6 @@
             position: relative;
         }
 
-        /* ৩. ছবির স্টাইল (Photo GIF) */
         .profile-img {
             width: 100px;
             height: 100px;
@@ -60,7 +58,6 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
-        /* নাম এবং ডেসক্রিপশন */
         h1 {
             font-size: 24px;
             margin: 10px 0 5px;
@@ -74,20 +71,19 @@
             line-height: 1.5;
         }
 
-        /* ৪. ক্যাটাগরি সেকশন (আপডেট করা) */
+        /* ৪. ক্যাটাগরি সেকশন */
         .section-title {
-            font-family: 'Consolas', monospace; /* ফন্ট পরিবর্তন */
-            font-size: 14px; /* ফন্ট সাইজ সামান্য বৃদ্ধি */
+            font-family: 'Consolas', monospace; 
+            font-size: 14px; 
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #ff99e6; /* নতুন কালার */
+            color: #ff99e6; 
             margin: 25px 0 10px;
             font-weight: bold;
-            border-bottom: 2px dashed rgba(255, 153, 230, 0.3); /* আন্ডারলাইন পরিবর্তন */
+            border-bottom: 2px dashed rgba(255, 153, 230, 0.3); 
             padding-bottom: 5px;
         }
 
-        /* বাটন/লিংক কন্টেইনার */
         .links-container {
             display: flex;
             justify-content: center;
@@ -108,7 +104,7 @@
             align-items: center;
             gap: 8px;
             transition: all 0.3s ease;
-            cursor: pointer; /* গেম বাটনের জন্য */
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -122,7 +118,7 @@
         .insta { color: #E1306C; }
         .whatsapp { color: #25D366; }
         .youtube { color: #FF0000; }
-        .spotify { color: #1DB954; } /* Spotify কালার */
+        .spotify { color: #1DB954; } 
         .game-icon { color: #FFD700; }
 
         /* ৬. ডেভেলপার মার্ক */
@@ -133,9 +129,82 @@
             background: rgba(0,0,0,0.2);
             padding: 8px;
             border-radius: 8px;
-            display: inline-flex; /* ফুটার আইকন যোগ করার জন্য */
+            display: inline-flex; 
             align-items: center;
             gap: 5px;
+        }
+
+        /* --- ৭. স্ক্রিনশট-ভিত্তিক কাস্টম মোডাল স্টাইল --- */
+        #game-modal {
+            position: absolute;
+            top: 20px; /* কার্ডের ওপর থেকে পজিশন */
+            right: -100px; /* কার্ডের ডান দিকে বাইরের পজিশন */
+            width: 200px;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: left;
+            z-index: 10;
+            
+            /* মোডাল গ্লাস ও গ্লো ইফেক্ট */
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px #af40ff, 0 0 25px #5b42f3;
+            
+            /* ডিফল্টভাবে লুকানো */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, right 0.3s ease, visibility 0.3s;
+        }
+        
+        #game-modal.active {
+            opacity: 1;
+            visibility: visible;
+            right: 40px; /* মেইন কার্ডের ভেতরে ডান দিকে সেট করা */
+        }
+
+        #game-modal h3 {
+            font-size: 14px;
+            color: #ff99e6;
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        #game-modal p {
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 5px 0;
+        }
+
+        #modal-game-name, #modal-game-uid {
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .modal-close-btn {
+            background-color: #5b42f3;
+            color: white;
+            padding: 6px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .modal-close-btn:hover {
+            background-color: #4a34d2;
+        }
+        
+        /* মোডাল হেডিংয়ের জন্য টোগল আইকন */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -157,7 +226,8 @@
             <a href="https://instagram.com/your-instagram-link" target="_blank" class="btn"><i class="fab fa-instagram insta"></i> Instagram</a>
             <a href="https://wa.me/your-whatsapp-number" target="_blank" class="btn"><i class="fab fa-whatsapp whatsapp"></i> WhatsApp</a>
             <a href="https://youtube.com/your-youtube-link" target="_blank" class="btn"><i class="fab fa-youtube youtube"></i> YouTube</a>
-            <a href="https://open.spotify.com/user/your-spotify-link" target="_blank" class="btn"><i class="fab fa-spotify spotify"></i> Spotify</a> </div>
+            <a href="https://open.spotify.com/user/your-spotify-link" target="_blank" class="btn"><i class="fab fa-spotify spotify"></i> Spotify</a> 
+        </div>
 
         <div class="section-title">Games I Play</div>
         <div class="links-container">
@@ -169,23 +239,57 @@
         </div>
 
         <div class="footer">
-            <i class="fas fa-code"></i> <code>Developer: HRIDOY HASAN</code>
+            <i class="fas fa-code"></i> 
+            <code>Developer: HRIDOY HASAN</code>
+        </div>
+
+        <div id="game-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-medal"></i> GAME CARD</h3>
+                <i class="fas fa-times modal-close-btn" style="background:none; color:white; padding:0; margin:0;"></i>
+            </div>
+            
+            <p>
+                **Game Name:** <span id="modal-game-name"></span><br>
+                **Player ID:** <span id="modal-game-uid"></span>
+            </p>
+            <button class="modal-close-btn">Close Card</button>
         </div>
     </div>
 
     <script>
+        const modal = document.getElementById('game-modal');
+        const closeModalBtn = document.querySelector('#game-modal .modal-close-btn');
+        const closeIconBtn = document.querySelector('#game-modal .fa-times'); // নতুন ক্লোজ আইকন
+        const gameNameSpan = document.getElementById('modal-game-name');
+        const gameUidSpan = document.getElementById('modal-game-uid');
+
         // গেম বাটনে ক্লিক ইভেন্ট লিসেনার
         document.querySelectorAll('.game-btn').forEach(button => {
             button.addEventListener('click', function(e) {
-                e.preventDefault(); // লিঙ্কের ডিফল্ট অ্যাকশন বন্ধ করা
+                e.preventDefault(); 
                 
                 const gameName = this.getAttribute('data-game');
                 const gameUID = this.getAttribute('data-uid');
                 
-                // পপ-আপ মেসেজ (Alert)
-                alert(`🎮 Game Details 🎮\n\nGame Name: ${gameName}\nPlayer ID (UID): ${gameUID}\n\n[Disclaimer: এটি একটি ডেমো পপ-আপ]`);
+                // মোডালে ডেটা লোড করা
+                gameNameSpan.textContent = gameName;
+                gameUidSpan.textContent = gameUID;
+                
+                // মোডাল প্রদর্শন করা
+                modal.classList.add('active');
             });
         });
+
+        // মোডাল বন্ধ করার ফাংশন
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // ক্লোজ বাটন এবং ক্লোজ আইকনের ইভেন্ট লিসেনার
+        closeModalBtn.addEventListener('click', closeModal);
+        closeIconBtn.addEventListener('click', closeModal); 
+
     </script>
 </body>
-    </html>
+                                                                                                                                         </html>
